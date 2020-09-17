@@ -1,0 +1,18 @@
+<div class="container">
+
+  <h1>Adicione um novo comentário para <%= @restaurant.name %></h1>
+
+  <%= simple_form_for [@restaurant, @review] do |f| %>
+
+    <p>
+      <%= f.input :content %>
+      <%= f.input :rating %>
+      <%= f.button :submit, class: 'btn btn-primary' %>
+    </p>
+    <% end %>
+
+  <p>
+    <%= link_to 'Voltar', restaurants_path, class: "btn btn-primary" %>
+  </p>
+
+</div>

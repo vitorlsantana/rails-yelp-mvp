@@ -1,0 +1,47 @@
+<div class="container">
+
+  <p>
+    <strong>Nome</strong>
+    <%= @restaurant.name %>
+  </p>
+
+  <p>
+    <strong>Endereço</strong>
+    <%= @restaurant.address %>
+  </p>
+
+  <p>
+    <strong>Telefone</strong>
+    <%= @restaurant.phone_number %>
+  </p>
+
+
+  <p>
+    <%= link_to 'Adicione um comentário', new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
+  </p>
+
+    <% if @restaurant.reviews.count.zero? %>
+      <p>
+        Seja o primeiro a comentar
+      </p>
+    <% else  %>
+
+      <ul>
+        <% @restaurant.reviews.each do |review| %>
+
+        <li>
+          Comentário: <%= review.content %> / Nota: <%= review.rating %>
+        </li>
+        <%= link_to 'remover', review_path(review), method: :delete %>
+
+        <% end %>
+
+      </ul>
+
+      <% end %>
+
+  <p>
+    <%= link_to 'Voltar', restaurants_path, class: "btn btn-primary" %>
+  </p>
+
+</div>
